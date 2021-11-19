@@ -1,0 +1,16 @@
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\bin\Debug\netstandard2.0\MetroEventsMobile.deps.json
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\bin\Debug\netstandard2.0\MetroEventsMobile.dll
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\bin\Debug\netstandard2.0\ref\MetroEventsMobile.dll
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\bin\Debug\netstandard2.0\MetroEventsMobile.pdb
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\MetroEventsMobile.csproj.AssemblyReference.cache
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\MetroEventsMobile.GeneratedMSBuildEditorConfig.editorconfig
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\App.xaml.g.cs
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\CreateAccountView.xaml.g.cs
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\SignInView.xaml.g.cs
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\MetroEventsMobile.AssemblyInfoInputs.cache
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\MetroEventsMobile.AssemblyInfo.cs
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\MetroEventsMobile.csproj.CoreCompileInputs.cache
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\XamlC.stamp
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\MetroEventsMobile.dll
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\ref\MetroEventsMobile.dll
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\MetroEventsMobile.pdb
