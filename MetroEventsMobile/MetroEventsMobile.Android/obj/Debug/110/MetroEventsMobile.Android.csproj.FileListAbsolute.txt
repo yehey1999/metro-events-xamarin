@@ -33,7 +33,6 @@ D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile.Android\obj
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile.Android\obj\Debug\110\R.txt
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile.Android\obj\Debug\110\R.cs.flag
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile.Android\obj\Debug\110\MetroEventsMobile.Android.csproj.CoreCompileInputs.cache
-D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile.Android\obj\Debug\110\MetroEventsMobile.Android.csproj.CopyComplete
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile.Android\obj\Debug\110\MetroEventsMobile.Android.dll
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile.Android\obj\Debug\110\MetroEventsMobile.Android.pdb
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile.Android\obj\Debug\110\android\bin\com.companyname.metroeventsmobile.apk
