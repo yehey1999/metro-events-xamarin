@@ -1,4 +1,4 @@
-﻿using MetroEventsMobile.ViewModels.Regular;
+﻿using MetroEventsMobile.ViewModels.Organizer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace MetroEventsMobile.Views.Regular
+namespace MetroEventsMobile.Views.Organizer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EventListView : ContentPage
+    public partial class RequestsReceivedView : ContentPage
     {
-        public EventListView()
+        public RequestsReceivedView()
         {
             InitializeComponent();
-            BindingContext = new EventListViewModel();
+            BindingContext = new RequestsReceivedViewModel();
         }
     }
 }

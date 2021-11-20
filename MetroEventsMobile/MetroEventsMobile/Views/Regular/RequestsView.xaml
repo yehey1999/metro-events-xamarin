@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MetroEventsMobile.Views.Regular.EventListView">
+             x:Class="MetroEventsMobile.Views.Regular.RequestsView">
     <ContentPage.Content>
         <StackLayout>
             <Button 
-                Text="Requests"
+                Text="Back"
                 HorizontalOptions="Fill" 
-                Command="{Binding OnGoToRequestsCommand}"/>
+                Command="{Binding OnGoToEventListCommand}"/>
 
             <ScrollView>
                 <CollectionView 
                     x:Name="collectionView"
-                    ItemsSource="{Binding Events}" >
+                    ItemsSource="{Binding Requests}" >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
                            ItemSpacing="25" />
@@ -26,19 +26,11 @@
                                 Margin="8">
                                 <StackLayout Orientation="Vertical">
                                     <Label Text="{Binding title}" />
-                                    <Label Text="{Binding description}" />
-                                    <Label Text="{Binding startDatetime}" />
-                                    <Label Text="{Binding endDatetime}" />
-                                    <Label Text="{Binding address}" />
+                                    <Label Text="{Binding type}" />
                                     <Label Text="{Binding status}" />
-                                    <StackLayout Orientation="Horizontal">
-                                        <Button 
-                                            Text="Reviews"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnGoToCreateEventCommand}"/>
-                                        <Button 
-                                            Text="Join"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnCreateJoinEventRequestCommand}" CommandParameter="{Binding .}"/>
-                                    </StackLayout>
+                                    <Label Text="{Binding eventRequested.title}" />
+                                    <Label Text="{Binding createdAt}" />
+                                    <Label Text="{Binding updatedAt}" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace MetroEventsMobile.Views.Regular
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EventListView : ContentPage
+    public partial class RequestsView : ContentPage
     {
-        public EventListView()
+        public RequestsView()
         {
             InitializeComponent();
-            BindingContext = new EventListViewModel();
+            BindingContext = new RequestsViewModel();
         }
     }
 }

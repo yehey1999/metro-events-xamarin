@@ -8,20 +8,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("MetroEventsMobile.Views.Regular.EventListView.xaml", "Views/Regular/EventListView.xaml", typeof(global::MetroEventsMobile.Views.Regular.EventListView))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("MetroEventsMobile.Views.Regular.RequestsView.xaml", "Views/Regular/RequestsView.xaml", typeof(global::MetroEventsMobile.Views.Regular.RequestsView))]
 
 namespace MetroEventsMobile.Views.Regular {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\Regular\\EventListView.xaml")]
-    public partial class EventListView : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\Regular\\RequestsView.xaml")]
+    public partial class RequestsView : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.CollectionView collectionView;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(EventListView));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(RequestsView));
             collectionView = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.CollectionView>(this, "collectionView");
         }
     }

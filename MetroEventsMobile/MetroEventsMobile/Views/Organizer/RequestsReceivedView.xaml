@@ -1,22 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MetroEventsMobile.Views.Organizer.EventDashboardView">
+             x:Class="MetroEventsMobile.Views.Organizer.RequestsReceivedView">
     <ContentPage.Content>
         <StackLayout>
             <Button 
-                Text="Create Event"
+                Text="Back"
                 HorizontalOptions="Fill" 
-                Command="{Binding OnGoToCreateEventCommand}"/>
-            <Button 
-                Text="Requests"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnGoToRequestsReceivedCommand}"/>
+                Command="{Binding OnGoToEventDashboardCommand}"/>
 
             <ScrollView>
                 <CollectionView 
                     x:Name="collectionView"
-                    ItemsSource="{Binding CreatedEvents}" >
+                    ItemsSource="{Binding EventRequests}" >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
                            ItemSpacing="25" />
@@ -29,18 +25,17 @@
                                 Padding="8"
                                 Margin="8">
                                 <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding eventRequested.title}" />
                                     <Label Text="{Binding title}" />
-                                    <Label Text="{Binding description}" />
-                                    <Label Text="{Binding startDatetime}" />
-                                    <Label Text="{Binding endDatetime}" />
-                                    <Label Text="{Binding address}" />
+                                    <Label Text="{Binding sender.firstName}" />
+                                    <Label Text="{Binding sender.lastName}" />
                                     <StackLayout Orientation="Horizontal">
                                         <Button 
-                                            Text="Show Participants"
+                                            Text="Decline"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnGoToCreateEventCommand}"/>
                                         <Button 
-                                            Text="Delete"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnDeleteEventCommand}" CommandParameter="{Binding .}"/>
+                                            Text="Accept"
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnCreateJoinEventRequestCommand}" CommandParameter="{Binding .}"/>
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>

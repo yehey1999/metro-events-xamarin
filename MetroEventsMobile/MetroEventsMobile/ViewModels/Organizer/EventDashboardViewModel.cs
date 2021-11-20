@@ -19,11 +19,19 @@ namespace MetroEventsMobile.ViewModels.Organizer
         }
 
         public Command OnGoToCreateEventCommand { get; private set; }
+
         public Command OnDeleteEventCommand { get; private set; }
+
+        public Command OnGoToRequestsReceivedCommand { get; private set; }
 
         public async void GoToCreateEvent()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new CreateEventView());
+        }
+
+        public async void GoToRequestsReceived()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new RequestsReceivedView());
         }
 
         public async void DeleteEvent(Event _event)
@@ -41,6 +49,7 @@ namespace MetroEventsMobile.ViewModels.Organizer
         {
             OnGoToCreateEventCommand = new Command(GoToCreateEvent);
             OnDeleteEventCommand = new Command<Event>(DeleteEvent);
+            OnGoToRequestsReceivedCommand = new Command(GoToRequestsReceived);
             LoadEvents();
         }
     }

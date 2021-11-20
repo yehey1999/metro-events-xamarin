@@ -26,11 +26,5 @@ namespace MetroEventsMobile.Models
 
         public List<Request> sentRequests { get; set; }
 
-        // public Event[] events { get; set; }
-
-        // public Event[] createdEvent { get; set; }
-
-        // public Request[] sentRequest { get; set; }
-
     }
 }

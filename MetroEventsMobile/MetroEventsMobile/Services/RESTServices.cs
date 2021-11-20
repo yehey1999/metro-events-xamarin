@@ -10,15 +10,21 @@ namespace MetroEventsMobile.Services
 {
     class RESTServices
     {
-        private static string BaseUrl = "https://6b3a-124-107-184-208.ngrok.io";
+        private static string BaseUrl = "https://78cb-124-107-184-208.ngrok.io";
         private static string Version = "metro";
 
         private static string urlUserCreateAccount = BaseUrl + "/" + Version + "/users";
         private static string urlUserCreatedEvents(string id) => BaseUrl + "/" + Version + "/users/" + id + "/created-events";
+        private static string urlUserSentRequests(string id) => BaseUrl + "/" + Version + "/users/" + id + "/requests";
         private static string urlUserSignIn = BaseUrl + "/" + Version + "/login";
         
         private static string urlEventCreate = BaseUrl + "/" + Version + "/events";
+        private static string urlEventAll = BaseUrl + "/" + Version + "/events";
+        private static string urlEventRequests(string id) => BaseUrl + "/" + Version + "/events/" + id + "/requests";
         private static string urlEventDelete(string id) => BaseUrl + "/" + Version + "/events/" + id;
+
+        private static string urlCreateRequest = BaseUrl + "/" + Version + "/requests";
+
 
 
         private static HttpClient client = null;
@@ -67,6 +73,14 @@ namespace MetroEventsMobile.Services
             return response;
         }
 
+        public static async Task<List<Event>> GetAllEvents()
+        {
+            HttpResponseMessage response = await RestCall.GetAsync(urlEventAll);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            List<Event> events = JsonConvert.DeserializeObject<List<Event>>(responseContent);
+            return events;
+        }
+
         public static async Task<List<Event>> GetAllCreatedEvents(string id)
         {
             HttpResponseMessage response = await RestCall.GetAsync(urlUserCreatedEvents(id));
@@ -74,5 +88,22 @@ namespace MetroEventsMobile.Services
             List<Event> events = JsonConvert.DeserializeObject<List<Event>>(responseContent);
             return events;
         }
+
+        public static async Task<Request> CreateJoinEventRequest(FormUrlEncodedContent content)
+        {
+            HttpResponseMessage response = await RestCall.PostAsync(urlCreateRequest, content);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Request request = JsonConvert.DeserializeObject<Request>(responseContent);
+            return request;
+        }
+
+        public static async Task<List<Request>> GetAllSentRequests(string id)
+        {
+            HttpResponseMessage response = await RestCall.GetAsync(urlUserSentRequests(id));
+            string responseContent = await response.Content.ReadAsStringAsync();
+            List<Request> requests = JsonConvert.DeserializeObject<List<Request>>(responseContent);
+            return requests;
+        }
+
     }
 }

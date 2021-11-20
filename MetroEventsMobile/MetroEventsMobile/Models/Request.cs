@@ -22,7 +22,7 @@ namespace MetroEventsMobile.Models
 
         public User sender { get; set; }
 
-        public Event _event { get; set; }
+        public Event eventRequested { get; set; }
 
     }
 

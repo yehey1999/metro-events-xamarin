@@ -1,0 +1,49 @@
+﻿using MetroEventsMobile.Models;
+using MetroEventsMobile.Services;
+using MetroEventsMobile.Views.Organizer;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Xamarin.Forms;
+
+namespace MetroEventsMobile.ViewModels.Organizer
+{
+    class RequestsReceivedViewModel : BaseViewModel
+    {
+        List<Request> eventRequests = new List<Request>();
+
+        public List<Request> EventRequests
+        {
+            get => eventRequests;
+            set => SetProperty(ref eventRequests, value);
+        }
+
+        public async void LoadEventRequests()
+        {
+            List<Event> createdEvents = await RESTServices.GetAllCreatedEvents(Store.User.id.ToString());
+            List<Request> _requests = new List<Request>();
+            foreach (Event ev in createdEvents)
+            {
+                if (ev.requests != null)
+                {
+                    _requests.AddRange(ev.requests);
+                }
+            }
+            EventRequests = _requests;
+        }
+
+        public Command OnGoToEventDashboardCommand { get; private set; }
+
+        public async void GoToEventDashboard()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new EventDashboardView());
+        }
+
+        public RequestsReceivedViewModel()
+        {
+            LoadEventRequests();
+            OnGoToEventDashboardCommand = new Command(GoToEventDashboard);
+        }
+
+    }
+}
