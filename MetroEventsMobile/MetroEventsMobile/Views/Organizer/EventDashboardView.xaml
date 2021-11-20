@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetroEventsMobile.Views.Organizer.EventDashboardView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button 
+                Text="Create Event"
+                HorizontalOptions="Fill" 
+                Command="{Binding OnGoToCreateEventCommand}"/>
+
+            <ScrollView>
+                <CollectionView 
+                    x:Name="collectionView"
+                    ItemsSource="{Binding CreatedEvents}" >
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="25" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame 
+                                BorderColor="Gray"
+                                CornerRadius="5"
+                                Padding="8"
+                                Margin="8">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding title}" />
+                                    <Label Text="{Binding description}" />
+                                    <Label Text="{Binding startDatetime}" />
+                                    <Label Text="{Binding endDatetime}" />
+                                    <Label Text="{Binding address}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Button 
+                                            Text="Show Participants"
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnGoToCreateEventCommand}"/>
+                                        <Button 
+                                            Text="Delete"
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnDeleteEventCommand}" CommandParameter="{Binding .}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

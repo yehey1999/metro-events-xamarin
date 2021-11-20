@@ -14,3 +14,6 @@ D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\n
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\MetroEventsMobile.dll
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\ref\MetroEventsMobile.dll
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\MetroEventsMobile.pdb
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\Regular\EventListView.xaml.g.cs
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\Organizer\EventDashboardView.xaml.g.cs
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\Organizer\CreateEventView.xaml.g.cs

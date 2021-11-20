@@ -6,17 +6,31 @@ namespace MetroEventsMobile.Models
 {
     public class User
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public int id { get; set; }
 
-        public User (string firstName, string lastName, string email, string password)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            Password = password;
-        }
+        public string firstName { get; set; }
+
+        public string lastName { get; set; }
+
+        public string email { get; set; }
+
+        public string password { get; set; }
+
+        public string type { get; set; }
+
+        public string grantedAt { get; set; }
+
+        public List<Event> events { get; set; }
+
+        public List<Event> createdEvents { get;  set; }
+
+        public List<Request> sentRequests { get; set; }
+
+        // public Event[] events { get; set; }
+
+        // public Event[] createdEvent { get; set; }
+
+        // public Request[] sentRequest { get; set; }
+
     }
 }
