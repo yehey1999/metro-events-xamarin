@@ -10,7 +10,7 @@ namespace MetroEventsMobile.Services
 {
     class RESTServices
     {
-        private static string BaseUrl = "https://78cb-124-107-184-208.ngrok.io";
+        private static string BaseUrl = "https://6de4-124-107-184-208.ngrok.io";
         private static string Version = "metro";
 
         private static string urlUserCreateAccount = BaseUrl + "/" + Version + "/users";
@@ -20,10 +20,15 @@ namespace MetroEventsMobile.Services
         
         private static string urlEventCreate = BaseUrl + "/" + Version + "/events";
         private static string urlEventAll = BaseUrl + "/" + Version + "/events";
+        private static string urlEventParticipants(string id) => BaseUrl + "/" + Version + "/events/" + id + "/participants";
+
         private static string urlEventRequests(string id) => BaseUrl + "/" + Version + "/events/" + id + "/requests";
         private static string urlEventDelete(string id) => BaseUrl + "/" + Version + "/events/" + id;
 
         private static string urlCreateRequest = BaseUrl + "/" + Version + "/requests";
+        private static string urlRequestAll = BaseUrl + "/" + Version + "/requests";
+        private static string urlRequestUpdate(string id) => BaseUrl + "/" + Version + "/requests/" + id;
+        
 
 
 
@@ -97,9 +102,57 @@ namespace MetroEventsMobile.Services
             return request;
         }
 
+        public static async Task<Request> CreateRequest(FormUrlEncodedContent content)
+        {
+            HttpResponseMessage response = await RestCall.PostAsync(urlCreateRequest, content);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Request request = JsonConvert.DeserializeObject<Request>(responseContent);
+            return request;
+        }
+
         public static async Task<List<Request>> GetAllSentRequests(string id)
         {
             HttpResponseMessage response = await RestCall.GetAsync(urlUserSentRequests(id));
+            string responseContent = await response.Content.ReadAsStringAsync();
+            List<Request> requests = JsonConvert.DeserializeObject<List<Request>>(responseContent);
+            return requests;
+        }
+
+        public static async Task<Request> UpdateJoinEventRequest(FormUrlEncodedContent content, string id)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("PATCH"), urlRequestUpdate(id))
+            {
+                Content = content
+            };
+            HttpResponseMessage response = await client.SendAsync(request);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Request _request = JsonConvert.DeserializeObject<Request>(responseContent);
+            return _request;
+        }
+
+        public static async Task<Request> UpdateRequest(FormUrlEncodedContent content, string id)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("PATCH"), urlRequestUpdate(id))
+            {
+                Content = content
+            };
+            HttpResponseMessage response = await client.SendAsync(request);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Request _request = JsonConvert.DeserializeObject<Request>(responseContent);
+            return _request;
+        }
+
+        public static async Task<List<User>> GetEventParticipants(string id)
+        {
+            HttpResponseMessage response = await RestCall.GetAsync(urlEventParticipants(id));
+            string responseContent = await response.Content.ReadAsStringAsync();
+            List<User> participants = JsonConvert.DeserializeObject<List<User>>(responseContent);
+            return participants;
+        }
+
+        public static async Task<List<Request>> GetAllRequests()
+        {
+            HttpResponseMessage response = await RestCall.GetAsync(urlRequestAll);
             string responseContent = await response.Content.ReadAsStringAsync();
             List<Request> requests = JsonConvert.DeserializeObject<List<Request>>(responseContent);
             return requests;

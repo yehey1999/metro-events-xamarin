@@ -1,6 +1,7 @@
 ﻿using MetroEventsMobile.Models;
 using MetroEventsMobile.Services;
 using MetroEventsMobile.Views;
+using MetroEventsMobile.Views.Admin;
 using MetroEventsMobile.Views.Organizer;
 using MetroEventsMobile.Views.Regular;
 using Newtonsoft.Json;
@@ -41,10 +42,14 @@ namespace MetroEventsMobile.ViewModels
             string payloadJson = JsonConvert.SerializeObject(payload);
             User user = await RESTServices.SignIn(payloadJson);
             Store.User = user;
+            Console.WriteLine("I am here");
+            Console.WriteLine(user.type);
             if (user.type.Equals("regular"))
                 await Application.Current.MainPage.Navigation.PushAsync(new EventListView());
             else if (user.type.Equals("organizer"))
                 await Application.Current.MainPage.Navigation.PushAsync(new EventDashboardView());
+            else if (user.type.Equals("admin"))
+                await Application.Current.MainPage.Navigation.PushAsync(new DashboardView());
         }
 
         private async void GoToCreateAccount()

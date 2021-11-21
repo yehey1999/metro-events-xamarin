@@ -1,5 +1,6 @@
 ﻿using MetroEventsMobile.Models;
 using MetroEventsMobile.Services;
+using MetroEventsMobile.Views;
 using MetroEventsMobile.Views.Regular;
 using Newtonsoft.Json;
 using System;
@@ -23,6 +24,8 @@ namespace MetroEventsMobile.ViewModels.Regular
 
         public Command OnCreateJoinEventRequestCommand { get; private set; }
         public Command OnGoToRequestsCommand { get; private set; }
+        public Command OnCreateRequestCommand { get; private set; }
+        public Command OnLogoutCommand { get; private set; }
 
         public async void CreateJoinEventRequest(Event _event)
         {
@@ -42,6 +45,24 @@ namespace MetroEventsMobile.ViewModels.Regular
             await Application.Current.MainPage.Navigation.PushAsync(new RequestsView());
         }
 
+        public async void GoToSignIn()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new SignInView());
+        }
+
+        public async void CreateRequest(string type)
+        {
+            var data = new List<KeyValuePair<string, string>>();
+            string info = type.Equals("request to admin") ? "admin" : "organizer";
+            data.Add(new KeyValuePair<string, string>("title", "Request to " +  info));
+            data.Add(new KeyValuePair<string, string>("details", ""));
+            data.Add(new KeyValuePair<string, string>("type", type));
+            data.Add(new KeyValuePair<string, string>("sender", Store.User.id.ToString()));
+            FormUrlEncodedContent content = new FormUrlEncodedContent(data);
+            await RESTServices.CreateRequest(content);
+            GoToRequests();
+        }
+
         public async void LoadEvents()
         {
             Events = await RESTServices.GetAllEvents();
@@ -51,6 +72,8 @@ namespace MetroEventsMobile.ViewModels.Regular
         {
             OnCreateJoinEventRequestCommand = new Command<Event>(CreateJoinEventRequest);
             OnGoToRequestsCommand = new Command(GoToRequests);
+            OnCreateRequestCommand = new Command<string>(CreateRequest);
+            OnLogoutCommand = new Command(GoToSignIn);
             LoadEvents();
         }
     }

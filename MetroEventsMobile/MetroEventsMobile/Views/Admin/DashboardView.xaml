@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MetroEventsMobile.Views.Organizer.RequestsReceivedView">
+             x:Class="MetroEventsMobile.Views.Admin.DashboardView">
     <ContentPage.Content>
         <StackLayout>
             <Button 
-                Text="Back"
+                Text="Logout"
                 HorizontalOptions="Fill" 
-                Command="{Binding OnGoToEventDashboardCommand}"/>
+                Command="{Binding OnLogoutCommand}"/>
 
             <ScrollView>
                 <CollectionView 
                     x:Name="collectionView"
-                    ItemsSource="{Binding EventRequests}" >
+                    ItemsSource="{Binding Requests}" >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
                            ItemSpacing="25" />
@@ -25,7 +25,7 @@
                                 Padding="8"
                                 Margin="8">
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding eventRequested.title}" />
+                                    <Label Text="{Binding type}" />
                                     <Label Text="{Binding title}" />
                                     <Label Text="{Binding status}" />
                                     <Label Text="{Binding sender.firstName}" />
@@ -33,10 +33,10 @@
                                     <StackLayout Orientation="Horizontal">
                                         <Button 
                                             Text="Decline"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnDeclineJoinEventRequestCommand}" CommandParameter="{Binding .}"/>
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnDeclineRequestCommand}" CommandParameter="{Binding .}"/>
                                         <Button 
                                             Text="Accept"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnAcceptJoinEventRequestCommand}" CommandParameter="{Binding .}"/>
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnAcceptRequestCommand}" CommandParameter="{Binding .}"/>
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>

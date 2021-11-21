@@ -8,6 +8,18 @@
                 Text="Requests"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnGoToRequestsCommand}"/>
+            <Button 
+                Text="Ask to Be Organizer"
+                HorizontalOptions="Fill" 
+                Command="{Binding OnCreateRequestCommand}" CommandParameter="request to organizer"/>
+            <Button 
+                Text="Ask to Be Admin"
+                HorizontalOptions="Fill" 
+                Command="{Binding OnCreateRequestCommand}" CommandParameter="request to admin"/>
+            <Button 
+                Text="Logout"
+                HorizontalOptions="Fill" 
+                Command="{Binding OnLogoutCommand}"/>
 
             <ScrollView>
                 <CollectionView 

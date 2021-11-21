@@ -1,5 +1,6 @@
 ﻿using MetroEventsMobile.Models;
 using MetroEventsMobile.Services;
+using MetroEventsMobile.Views;
 using MetroEventsMobile.Views.Organizer;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,10 @@ namespace MetroEventsMobile.ViewModels.Organizer
 
         public Command OnGoToRequestsReceivedCommand { get; private set; }
 
+        public Command OnShowEventParticipantsCommand { get; private set; }
+
+        public Command OnLogoutCommand { get; private set; }
+
         public async void GoToCreateEvent()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new CreateEventView());
@@ -34,10 +39,20 @@ namespace MetroEventsMobile.ViewModels.Organizer
             await Application.Current.MainPage.Navigation.PushAsync(new RequestsReceivedView());
         }
 
+        public async void GoToSignIn()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new SignInView());
+        }
+
         public async void DeleteEvent(Event _event)
         {
             await RESTServices.DeleteEvent(_event.id.ToString());
             LoadEvents();
+        }
+
+        public async void ShowEventParticipants(Event _event)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new EventParticipantsView(_event.id.ToString()));
         }
 
         public async void LoadEvents()
@@ -50,6 +65,8 @@ namespace MetroEventsMobile.ViewModels.Organizer
             OnGoToCreateEventCommand = new Command(GoToCreateEvent);
             OnDeleteEventCommand = new Command<Event>(DeleteEvent);
             OnGoToRequestsReceivedCommand = new Command(GoToRequestsReceived);
+            OnShowEventParticipantsCommand = new Command<Event>(ShowEventParticipants);
+            OnLogoutCommand = new Command(GoToSignIn);
             LoadEvents();
         }
     }

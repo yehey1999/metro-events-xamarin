@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MetroEventsMobile.Views.Organizer.RequestsReceivedView">
+             x:Class="MetroEventsMobile.Views.Organizer.EventParticipantsView">
     <ContentPage.Content>
         <StackLayout>
             <Button 
@@ -12,7 +12,7 @@
             <ScrollView>
                 <CollectionView 
                     x:Name="collectionView"
-                    ItemsSource="{Binding EventRequests}" >
+                    ItemsSource="{Binding EventParticipants}" >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
                            ItemSpacing="25" />
@@ -25,19 +25,8 @@
                                 Padding="8"
                                 Margin="8">
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding eventRequested.title}" />
-                                    <Label Text="{Binding title}" />
-                                    <Label Text="{Binding status}" />
-                                    <Label Text="{Binding sender.firstName}" />
-                                    <Label Text="{Binding sender.lastName}" />
-                                    <StackLayout Orientation="Horizontal">
-                                        <Button 
-                                            Text="Decline"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnDeclineJoinEventRequestCommand}" CommandParameter="{Binding .}"/>
-                                        <Button 
-                                            Text="Accept"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnAcceptJoinEventRequestCommand}" CommandParameter="{Binding .}"/>
-                                    </StackLayout>
+                                    <Label Text="{Binding firstName}" />
+                                    <Label Text="{Binding lastName}" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

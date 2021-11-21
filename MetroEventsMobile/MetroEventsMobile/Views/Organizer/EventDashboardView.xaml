@@ -12,6 +12,10 @@
                 Text="Requests"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnGoToRequestsReceivedCommand}"/>
+            <Button 
+                Text="Logout"
+                HorizontalOptions="Fill" 
+                Command="{Binding OnLogoutCommand}"/>
 
             <ScrollView>
                 <CollectionView 
@@ -37,7 +41,7 @@
                                     <StackLayout Orientation="Horizontal">
                                         <Button 
                                             Text="Show Participants"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnGoToCreateEventCommand}"/>
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnShowEventParticipantsCommand}" CommandParameter="{Binding .}"/>
                                         <Button 
                                             Text="Delete"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnDeleteEventCommand}" CommandParameter="{Binding .}"/>

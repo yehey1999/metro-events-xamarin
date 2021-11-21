@@ -19,3 +19,5 @@ D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\n
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\Organizer\CreateEventView.xaml.g.cs
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\Regular\RequestsView.xaml.g.cs
 D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\Organizer\RequestsReceivedView.xaml.g.cs
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\Organizer\EventParticipantsView.xaml.g.cs
+D:\MetroEvents\MetroEventsMobile\MetroEventsMobile\MetroEventsMobile\obj\Debug\netstandard2.0\Views\Admin\DashboardView.xaml.g.cs
