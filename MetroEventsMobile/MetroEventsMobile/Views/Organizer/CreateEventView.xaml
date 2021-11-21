@@ -3,18 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MetroEventsMobile.Views.Organizer.CreateEventView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!" />
+        <StackLayout Margin="40,0" VerticalOptions="Center">
             <Entry Placeholder="Title" Text="{Binding Title}"/>
             <Entry Placeholder="Description" Text="{Binding Description}"/>
             <Entry Placeholder="Start Date Time" Text="{Binding StartDateTime}"/>
             <Entry Placeholder="End Date Time" Text="{Binding EndDateTime}"/>
             <Entry Placeholder="Address" Text="{Binding Address}"/>
             <Button 
+                Margin="0,15"
+                BackgroundColor="DarkViolet"
+                TextColor="White"
                 Text="Create Event"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnCreateEventCommand}"/>
             <Button 
+                Margin="0,30"
+                BackgroundColor="Transparent"
+                TextColor="DarkViolet"
                 Text="Cancel"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnGoToEventDashboardCommand}" />

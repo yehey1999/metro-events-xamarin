@@ -5,12 +5,16 @@
     <ContentPage.Content>
         <StackLayout>
             <Button 
+                Margin="20,20"
+                BackgroundColor="DarkViolet"
+                TextColor="White"
                 Text="Back"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnGoToDashboardCommand}"/>
 
-            <ScrollView>
+            <ScrollView Padding="10, 30">
                 <CollectionView 
+                    Margin="20,0"
                     x:Name="collectionView"
                     ItemsSource="{Binding Events}" >
                     <CollectionView.ItemsLayout>
@@ -20,17 +24,17 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding title}" />
-                                    <Label Text="{Binding description}" />
-                                    <Label Text="{Binding startDatetime}" />
-                                    <Label Text="{Binding endDatetime}" />
-                                    <Label Text="{Binding address}" />
-                                    <Label Text="{Binding status}" />
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding title}" />
+                                    <Label FontSize="18" Text="{Binding description}" />
+                                    <Label FontSize="18" Text="{Binding startDatetime}" />
+                                    <Label FontSize="18" Text="{Binding endDatetime}" />
+                                    <Label FontSize="18" Text="{Binding address}" />
+                                    <Label FontSize="18" Text="{Binding status}" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

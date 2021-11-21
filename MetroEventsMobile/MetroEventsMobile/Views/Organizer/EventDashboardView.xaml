@@ -4,22 +4,44 @@
              x:Class="MetroEventsMobile.Views.Organizer.EventDashboardView">
     <ContentPage.Content>
         <StackLayout>
-            <Button 
-                Text="Create Event"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnGoToCreateEventCommand}"/>
-            <Button 
-                Text="Requests"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnGoToRequestsReceivedCommand}"/>
-            <Button 
-                Text="Logout"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnLogoutCommand}"/>
-
-            <ScrollView>
+            <Grid Margin="20,20" HorizontalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Button 
+                    BackgroundColor="DarkViolet"
+                    TextColor="White"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Create Event"
+                    HorizontalOptions="Fill" 
+                    Command="{Binding OnGoToCreateEventCommand}"/>
+                <Button 
+                    BackgroundColor="DarkViolet"
+                    TextColor="White"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Requests"
+                    HorizontalOptions="Fill" 
+                    Command="{Binding OnGoToRequestsReceivedCommand}"/>
+                <Button 
+                    BackgroundColor="Transparent"
+                    TextColor="DarkViolet"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="Logout"
+                    HorizontalOptions="Fill" 
+                    Command="{Binding OnLogoutCommand}"/>
+            </Grid>
+            <ScrollView Padding="10, 30" HorizontalOptions="Fill">
                 <CollectionView 
                     x:Name="collectionView"
+                    Margin="20,0"
                     ItemsSource="{Binding CreatedEvents}" >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
@@ -28,28 +50,48 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding title}" />
-                                    <Label Text="{Binding description}" />
-                                    <Label Text="{Binding startDatetime}" />
-                                    <Label Text="{Binding endDatetime}" />
-                                    <Label Text="{Binding address}" />
-                                    <Label Text="{Binding status}" />
-                                    <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding title}" />
+                                    <Label FontSize="18" Text="{Binding description}" />
+                                    <Label FontSize="18" Text="{Binding startDatetime}" />
+                                    <Label FontSize="18" Text="{Binding endDatetime}" />
+                                    <Label FontSize="18" Text="{Binding address}" />
+                                    <Label FontSize="18" Text="{Binding status}" />
+                                    <Grid HorizontalOptions="Fill">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50" />
+                                            <RowDefinition Height="50" />
+                                        </Grid.RowDefinitions>
                                         <Button 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            BackgroundColor="DarkViolet"
+                                            TextColor="White"
                                             Text="Reviews"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnShowEventReviewsCommand}" CommandParameter="{Binding .}"/>
                                         <Button 
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            BackgroundColor="DarkViolet"
+                                            TextColor="White"
                                             Text="Show Participants"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnShowEventParticipantsCommand}" CommandParameter="{Binding .}"/>
                                         <Button 
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            BackgroundColor="Transparent"
+                                            TextColor="DarkViolet"
                                             Text="Cancel"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnCancelEventCommand}" CommandParameter="{Binding .}"/>
-                                    </StackLayout>
+                                    </Grid>
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

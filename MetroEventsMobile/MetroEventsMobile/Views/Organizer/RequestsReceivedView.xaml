@@ -5,12 +5,16 @@
     <ContentPage.Content>
         <StackLayout>
             <Button 
+                Margin="20,20"
+                BackgroundColor="DarkViolet"
+                TextColor="White"
                 Text="Back"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnGoToEventDashboardCommand}"/>
 
-            <ScrollView>
+            <ScrollView Padding="10, 30">
                 <CollectionView 
+                    Margin="20,0"
                     x:Name="collectionView"
                     ItemsSource="{Binding EventRequests}" >
                     <CollectionView.ItemsLayout>
@@ -20,21 +24,25 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding eventRequested.title}" />
-                                    <Label Text="{Binding title}" />
-                                    <Label Text="{Binding status}" />
-                                    <Label Text="{Binding sender.firstName}" />
-                                    <Label Text="{Binding sender.lastName}" />
-                                    <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding eventRequested.title}" />
+                                    <Label FontSize="18" Text="{Binding title}" />
+                                    <Label FontSize="18" Text="{Binding status}" />
+                                    <Label FontSize="18" Text="{Binding sender.firstName}" />
+                                    <Label FontSize="18" Text="{Binding sender.lastName}" />
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                                         <Button 
+                                            BackgroundColor="Transparent"
+                                            TextColor="DarkViolet"
                                             Text="Decline"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnDeclineJoinEventRequestCommand}" CommandParameter="{Binding .}"/>
                                         <Button 
+                                            BackgroundColor="DarkViolet"
+                                            TextColor="White"
                                             Text="Accept"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnAcceptJoinEventRequestCommand}" CommandParameter="{Binding .}"/>
                                     </StackLayout>

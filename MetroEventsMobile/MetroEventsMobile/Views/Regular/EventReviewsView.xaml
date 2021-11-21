@@ -4,19 +4,46 @@
              x:Class="MetroEventsMobile.Views.Regular.EventReviewsView">
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Create Review" Text="{Binding Review}"/>
-            <Button 
-                Text="Send Review"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnCreateReviewCommand}" />
-            <Button 
-                Text="Back"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnGoToEventListCommand}" />
-            <Label Text="{Binding Event.title}" />
-            
-            <ScrollView>
+            <Grid Margin="20,0" HorizontalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Entry Grid.Row="0" Grid.ColumnSpan="2" Placeholder="Create Review" Text="{Binding Review}"/>
+                <Button 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="Send Review"
+                    HorizontalOptions="Fill" 
+                    BackgroundColor="DarkViolet"
+                    TextColor="White"
+                    Command="{Binding OnCreateReviewCommand}" />
+                <Button 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Back"
+                    HorizontalOptions="Fill" 
+                    BackgroundColor="DarkViolet"
+                    TextColor="White"
+                    Command="{Binding OnGoToEventListCommand}" />
+                <Label 
+                    HorizontalTextAlignment="Center"
+                    Padding="0,10"
+                    FontSize="24" 
+                    FontAttributes="Bold" 
+                    Grid.Row="2" 
+                    Grid.ColumnSpan="2" 
+                    Text="{Binding Event.title}" 
+                />
+            </Grid>
+            <ScrollView Padding="10, 30">
                 <CollectionView 
+                    Margin="20,0"
                     x:Name="collectionView"
                     ItemsSource="{Binding EventReviews}" >
                     <CollectionView.ItemsLayout>
@@ -26,15 +53,15 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding comment}" />
-                                    <Label Text="{Binding user.firstName}" />
-                                    <Label Text="{Binding user.lastName}" />
-                                    <Label Text="{Binding createdAt }" />
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding comment}" />
+                                    <Label FontSize="18" Text="{Binding user.firstName}" />
+                                    <Label FontSize="18" Text="{Binding user.lastName}" />
+                                    <Label FontSize="18" Text="{Binding createdAt }" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

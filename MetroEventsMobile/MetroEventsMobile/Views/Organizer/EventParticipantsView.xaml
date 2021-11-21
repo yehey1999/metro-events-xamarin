@@ -5,12 +5,16 @@
     <ContentPage.Content>
         <StackLayout>
             <Button 
+                Margin="20,20"
+                BackgroundColor="DarkViolet"
+                TextColor="White"
                 Text="Back"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnGoToEventDashboardCommand}"/>
 
-            <ScrollView>
+            <ScrollView Padding="10, 30">
                 <CollectionView 
+                    Margin="20,0"
                     x:Name="collectionView"
                     ItemsSource="{Binding EventParticipants}" >
                     <CollectionView.ItemsLayout>
@@ -20,13 +24,13 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding firstName}" />
-                                    <Label Text="{Binding lastName}" />
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding firstName}" />
+                                    <Label FontSize="18" Text="{Binding lastName}" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

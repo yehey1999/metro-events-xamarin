@@ -4,26 +4,52 @@
              x:Class="MetroEventsMobile.Views.Regular.EventListView">
     <ContentPage.Content>
         <StackLayout>
-            <Button 
-                Text="Requests"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnGoToRequestsCommand}"/>
-            <Button 
-                Text="Ask to Be Organizer"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnCreateRequestCommand}" CommandParameter="request to organizer"/>
-            <Button 
-                Text="Ask to Be Admin"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnCreateRequestCommand}" CommandParameter="request to admin"/>
-            <Button 
-                Text="Logout"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnLogoutCommand}"/>
+            <Grid Margin="20,20" HorizontalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Button 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="Requests"
+                    BackgroundColor="DarkViolet"
+                    TextColor="White"
+                    Command="{Binding OnGoToRequestsCommand}"/>
+                <Button 
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="Ask to Be Organizer"
+                    HorizontalOptions="Fill" 
+                    BackgroundColor="DarkViolet"
+                    TextColor="White"
+                    Command="{Binding OnCreateRequestCommand}" CommandParameter="request to organizer"/>
+                <Button 
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Ask to Be Admin"
+                    HorizontalOptions="Fill" 
+                    BackgroundColor="DarkViolet"
+                    TextColor="White"
+                    Command="{Binding OnCreateRequestCommand}" CommandParameter="request to admin"/>
+                <Button 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="Logout"
+                    HorizontalOptions="Fill" 
+                    BackgroundColor="Transparent"
+                    TextColor="Violet"
+                    Command="{Binding OnLogoutCommand}"/>
+            </Grid>
 
-            <ScrollView>
+            <ScrollView Padding="10, 30" HorizontalOptions="Fill">
                 <CollectionView 
                     x:Name="collectionView"
+                    Margin="20,0"
                     ItemsSource="{Binding Events}" >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
@@ -32,23 +58,27 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding title}" />
-                                    <Label Text="{Binding description}" />
-                                    <Label Text="{Binding startDatetime}" />
-                                    <Label Text="{Binding endDatetime}" />
-                                    <Label Text="{Binding address}" />
-                                    <Label Text="{Binding status}" />
-                                    <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding title}" />
+                                    <Label FontSize="18" Text="{Binding description}" />
+                                    <Label FontSize="18" Text="{Binding startDatetime}" />
+                                    <Label FontSize="18" Text="{Binding endDatetime}" />
+                                    <Label FontSize="18" Text="{Binding address}" />
+                                    <Label FontSize="18" Text="{Binding status}" />
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                                         <Button 
                                             Text="Reviews"
+                                            BackgroundColor="Transparent"
+                                            TextColor="DarkViolet"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnGoEventReviewsCommand}" CommandParameter="{Binding .}"/>
                                         <Button 
                                             Text="Join"
+                                            BackgroundColor="DarkViolet"
+                                            TextColor="White"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnCreateJoinEventRequestCommand}" CommandParameter="{Binding .}"/>
                                     </StackLayout>
                                 </StackLayout>

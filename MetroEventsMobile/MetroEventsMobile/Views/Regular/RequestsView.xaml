@@ -5,11 +5,14 @@
     <ContentPage.Content>
         <StackLayout>
             <Button 
+                Margin="20,20"
                 Text="Back"
                 HorizontalOptions="Fill" 
+                BackgroundColor="DarkViolet"
+                TextColor="White"
                 Command="{Binding OnGoToEventListCommand}"/>
 
-            <ScrollView>
+            <ScrollView Padding="10, 30" HorizontalOptions="Fill">
                 <CollectionView 
                     x:Name="collectionView"
                     ItemsSource="{Binding Requests}" >
@@ -20,17 +23,15 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding title}" />
-                                    <Label Text="{Binding type}" />
-                                    <Label Text="{Binding status}" />
-                                    <Label Text="{Binding eventRequested.title}" />
-                                    <Label Text="{Binding createdAt}" />
-                                    <Label Text="{Binding updatedAt}" />
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding title}" />
+                                    <Label FontSize="18" Text="{Binding status}" />
+                                    <Label FontSize="18" Text="{Binding eventRequested.title}" />
+                                    <Label FontSize="18" Text="{Binding updatedAt}" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

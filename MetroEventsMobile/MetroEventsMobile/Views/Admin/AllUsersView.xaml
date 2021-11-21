@@ -5,13 +5,17 @@
     <ContentPage.Content>
         <StackLayout>
             <Button 
+                Margin="20,20"
+                BackgroundColor="DarkViolet"
+                TextColor="White"
                 Text="Back"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnGoToDashboardCommand}"/>
 
-            <ScrollView>
+            <ScrollView Padding="10, 30">
                 <CollectionView 
                     x:Name="collectionView"
+                    Margin="20,0"
                     ItemsSource="{Binding Users}" >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
@@ -20,16 +24,16 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding firstName}" />
-                                    <Label Text="{Binding lastName}" />
-                                    <Label Text="{Binding email}" />
-                                    <Label Text="{Binding password}" />
-                                    <Label Text="{Binding type}" />
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding firstName}" />
+                                    <Label FontSize="18" Text="{Binding lastName}" />
+                                    <Label FontSize="18" Text="{Binding email}" />
+                                    <Label FontSize="18" Text="{Binding password}" />
+                                    <Label FontSize="18" Text="{Binding type}" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

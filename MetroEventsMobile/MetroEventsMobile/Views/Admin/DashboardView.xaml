@@ -4,22 +4,45 @@
              x:Class="MetroEventsMobile.Views.Admin.DashboardView">
     <ContentPage.Content>
         <StackLayout>
-            <Button 
-                Text="All Users"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnShowAllUsersViewCommand}"/>
-            <Button 
-                Text="All Events"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnShowAllEventsViewCommand}"/>
-            <Button 
-                Text="Logout"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnLogoutCommand}"/>
-
-            <ScrollView>
+            <Grid Margin="20,20" HorizontalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Button 
+                    BackgroundColor="DarkViolet"
+                    TextColor="White"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="All Users"
+                    HorizontalOptions="Fill" 
+                    Command="{Binding OnShowAllUsersViewCommand}"/>
+                <Button 
+                    BackgroundColor="DarkViolet"
+                    TextColor="White"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Text="All Events"
+                    HorizontalOptions="Fill" 
+                    Command="{Binding OnShowAllEventsViewCommand}"/>
+                <Button 
+                    BackgroundColor="Transparent"
+                    TextColor="DarkViolet"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Text="Logout"
+                    HorizontalOptions="Fill" 
+                    Command="{Binding OnLogoutCommand}"/>
+            </Grid>
+            
+            <ScrollView Padding="10, 30">
                 <CollectionView 
                     x:Name="collectionView"
+                    Margin="20,0"
                     ItemsSource="{Binding Requests}" >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
@@ -28,21 +51,25 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding type}" />
-                                    <Label Text="{Binding title}" />
-                                    <Label Text="{Binding status}" />
-                                    <Label Text="{Binding sender.firstName}" />
-                                    <Label Text="{Binding sender.lastName}" />
-                                    <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding type}" />
+                                    <Label FontSize="18" Text="{Binding title}" />
+                                    <Label FontSize="18" Text="{Binding status}" />
+                                    <Label FontSize="18" Text="{Binding sender.firstName}" />
+                                    <Label FontSize="18" Text="{Binding sender.lastName}" />
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                                         <Button 
+                                            BackgroundColor="Transparent"
+                                            TextColor="DarkViolet"
                                             Text="Decline"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnDeclineRequestCommand}" CommandParameter="{Binding .}"/>
                                         <Button 
+                                            BackgroundColor="DarkViolet"
+                                            TextColor="White"
                                             Text="Accept"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnAcceptRequestCommand}" CommandParameter="{Binding .}"/>
                                     </StackLayout>

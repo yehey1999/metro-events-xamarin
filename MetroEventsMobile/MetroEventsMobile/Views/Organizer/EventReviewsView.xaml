@@ -5,13 +5,22 @@
     <ContentPage.Content>
         <StackLayout>
             <Button 
+                Margin="20,20"
+                BackgroundColor="DarkViolet"
+                TextColor="White"
                 Text="Back"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnGoToEventEventDashboard}" />
-            <Label Text="{Binding Event.title}" />
+            <Label 
+                HorizontalTextAlignment="Center"
+                Padding="0,10"
+                FontSize="24" 
+                FontAttributes="Bold"  
+                Text="{Binding Event.title}" />
 
-            <ScrollView>
+            <ScrollView Padding="10, 30">
                 <CollectionView 
+                    Margin="20,0"
                     x:Name="collectionView"
                     ItemsSource="{Binding EventReviews}" >
                     <CollectionView.ItemsLayout>
@@ -21,15 +30,15 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Frame 
-                                BorderColor="Gray"
-                                CornerRadius="5"
+                                BorderColor="Violet"
+                                CornerRadius="10"
                                 Padding="8"
                                 Margin="8">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding comment}" />
-                                    <Label Text="{Binding user.firstName}" />
-                                    <Label Text="{Binding user.lastName}" />
-                                    <Label Text="{Binding createdAt }" />
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <Label FontSize="18" Text="{Binding comment}" />
+                                    <Label FontSize="18" Text="{Binding user.firstName}" />
+                                    <Label FontSize="18" Text="{Binding user.lastName}" />
+                                    <Label FontSize="18" Text="{Binding createdAt }" />
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

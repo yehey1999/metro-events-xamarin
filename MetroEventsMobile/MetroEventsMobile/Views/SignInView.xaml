@@ -3,16 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MetroEventsMobile.Views.SignInView">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="50,50" VerticalOptions="Center">
+            <Label 
+                Text="Metro Events" 
+                HorizontalOptions="Center" 
+                Margin="0,20"
+                FontSize="32" 
+                TextColor="DarkViolet"
+                FontAttributes="Bold"/>
             <Entry Placeholder="Email" Text="{Binding Email}"/>
-            <Entry Placeholder="Password" Text="{Binding Password}"/>
+            <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" />
             <Button 
                 Text="Sign In"
                 HorizontalOptions="Fill" 
+                Margin="0,20"
+                BackgroundColor="DarkViolet"
+                TextColor="White"
                 Command="{Binding OnSignInCommand}"/>
             <Button 
                 Text="Create Account"
                 HorizontalOptions="Fill" 
+                Margin="0,50"
+                TextColor="DarkViolet"
+                BackgroundColor="Transparent"
                 Command="{Binding OnGoToCreateAccountCommand}" />
         </StackLayout>
     </ContentPage.Content>
