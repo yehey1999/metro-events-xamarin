@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetroEventsMobile.Views.Admin.AllUsersView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button 
+                Text="Back"
+                HorizontalOptions="Fill" 
+                Command="{Binding OnGoToDashboardCommand}"/>
+
+            <ScrollView>
+                <CollectionView 
+                    x:Name="collectionView"
+                    ItemsSource="{Binding Users}" >
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="25" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame 
+                                BorderColor="Gray"
+                                CornerRadius="5"
+                                Padding="8"
+                                Margin="8">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding firstName}" />
+                                    <Label Text="{Binding lastName}" />
+                                    <Label Text="{Binding email}" />
+                                    <Label Text="{Binding password}" />
+                                    <Label Text="{Binding type}" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -42,8 +42,6 @@ namespace MetroEventsMobile.ViewModels
             string payloadJson = JsonConvert.SerializeObject(payload);
             User user = await RESTServices.SignIn(payloadJson);
             Store.User = user;
-            Console.WriteLine("I am here");
-            Console.WriteLine(user.type);
             if (user.type.Equals("regular"))
                 await Application.Current.MainPage.Navigation.PushAsync(new EventListView());
             else if (user.type.Equals("organizer"))

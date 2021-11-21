@@ -1,26 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MetroEventsMobile.Views.Organizer.EventDashboardView">
+             x:Class="MetroEventsMobile.Views.Admin.AllEventsView">
     <ContentPage.Content>
         <StackLayout>
             <Button 
-                Text="Create Event"
+                Text="Back"
                 HorizontalOptions="Fill" 
-                Command="{Binding OnGoToCreateEventCommand}"/>
-            <Button 
-                Text="Requests"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnGoToRequestsReceivedCommand}"/>
-            <Button 
-                Text="Logout"
-                HorizontalOptions="Fill" 
-                Command="{Binding OnLogoutCommand}"/>
+                Command="{Binding OnGoToDashboardCommand}"/>
 
             <ScrollView>
                 <CollectionView 
                     x:Name="collectionView"
-                    ItemsSource="{Binding CreatedEvents}" >
+                    ItemsSource="{Binding Events}" >
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"
                            ItemSpacing="25" />
@@ -39,17 +31,6 @@
                                     <Label Text="{Binding endDatetime}" />
                                     <Label Text="{Binding address}" />
                                     <Label Text="{Binding status}" />
-                                    <StackLayout Orientation="Horizontal">
-                                        <Button 
-                                            Text="Reviews"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnShowEventReviewsCommand}" CommandParameter="{Binding .}"/>
-                                        <Button 
-                                            Text="Show Participants"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnShowEventParticipantsCommand}" CommandParameter="{Binding .}"/>
-                                        <Button 
-                                            Text="Cancel"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnCancelEventCommand}" CommandParameter="{Binding .}"/>
-                                    </StackLayout>
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>

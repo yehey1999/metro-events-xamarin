@@ -10,9 +10,10 @@ namespace MetroEventsMobile.Services
 {
     class RESTServices
     {
-        private static string BaseUrl = "https://6de4-124-107-184-208.ngrok.io";
+        private static string BaseUrl = "https://67ba-124-107-184-208.ngrok.io";
         private static string Version = "metro";
-
+        
+        private static string urlUserAll = BaseUrl + "/" + Version + "/users";
         private static string urlUserCreateAccount = BaseUrl + "/" + Version + "/users";
         private static string urlUserCreatedEvents(string id) => BaseUrl + "/" + Version + "/users/" + id + "/created-events";
         private static string urlUserSentRequests(string id) => BaseUrl + "/" + Version + "/users/" + id + "/requests";
@@ -21,8 +22,10 @@ namespace MetroEventsMobile.Services
         private static string urlEventCreate = BaseUrl + "/" + Version + "/events";
         private static string urlEventAll = BaseUrl + "/" + Version + "/events";
         private static string urlEventParticipants(string id) => BaseUrl + "/" + Version + "/events/" + id + "/participants";
-
         private static string urlEventRequests(string id) => BaseUrl + "/" + Version + "/events/" + id + "/requests";
+        private static string urlEventReviews(string id) => BaseUrl + "/" + Version + "/reviews/events/" + id;
+        private static string urlEventUpdate(string id) => BaseUrl + "/" + Version + "/events/" + id;
+        private static string urlEventCreateReview(string id) => BaseUrl + "/" + Version + "/reviews/events/" + id;
         private static string urlEventDelete(string id) => BaseUrl + "/" + Version + "/events/" + id;
 
         private static string urlCreateRequest = BaseUrl + "/" + Version + "/requests";
@@ -61,6 +64,14 @@ namespace MetroEventsMobile.Services
             string responseContent = await response.Content.ReadAsStringAsync();
             User user = JsonConvert.DeserializeObject<User>(responseContent);
             return user;
+        }
+
+        public static async Task<List<User>> GetAllUsers()
+        {
+            HttpResponseMessage response = await RestCall.GetAsync(urlUserAll);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            List<User> users = JsonConvert.DeserializeObject<List<User>>(responseContent);
+            return users;
         }
 
         public static async Task<Event> CreateEvent(string json)
@@ -156,6 +167,34 @@ namespace MetroEventsMobile.Services
             string responseContent = await response.Content.ReadAsStringAsync();
             List<Request> requests = JsonConvert.DeserializeObject<List<Request>>(responseContent);
             return requests;
+        }
+
+        public static async Task<List<Review>> GetEventReviews(string id)
+        {
+            HttpResponseMessage response = await RestCall.GetAsync(urlEventReviews(id));
+            string responseContent = await response.Content.ReadAsStringAsync();
+            List<Review> reviews = JsonConvert.DeserializeObject<List<Review>>(responseContent);
+            return reviews;
+        }
+
+        public static async Task<Review> CreateReview(FormUrlEncodedContent content, string id)
+        {
+            HttpResponseMessage response = await RestCall.PostAsync(urlEventCreateReview(id), content);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Review review = JsonConvert.DeserializeObject<Review>(responseContent);
+            return review;
+        }
+
+        public static async Task<Event> UpdateEvent(FormUrlEncodedContent content, string id)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(new HttpMethod("PATCH"), urlEventUpdate(id))
+            {
+                Content = content
+            };
+            HttpResponseMessage response = await client.SendAsync(request);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            Event _event = JsonConvert.DeserializeObject<Event>(responseContent);
+            return _event;
         }
 
     }

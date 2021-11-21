@@ -5,6 +5,14 @@
     <ContentPage.Content>
         <StackLayout>
             <Button 
+                Text="All Users"
+                HorizontalOptions="Fill" 
+                Command="{Binding OnShowAllUsersViewCommand}"/>
+            <Button 
+                Text="All Events"
+                HorizontalOptions="Fill" 
+                Command="{Binding OnShowAllEventsViewCommand}"/>
+            <Button 
                 Text="Logout"
                 HorizontalOptions="Fill" 
                 Command="{Binding OnLogoutCommand}"/>

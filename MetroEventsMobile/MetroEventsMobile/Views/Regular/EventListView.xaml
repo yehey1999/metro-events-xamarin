@@ -46,7 +46,7 @@
                                     <StackLayout Orientation="Horizontal">
                                         <Button 
                                             Text="Reviews"
-                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnGoToCreateEventCommand}"/>
+                                            Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnGoEventReviewsCommand}" CommandParameter="{Binding .}"/>
                                         <Button 
                                             Text="Join"
                                             Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.OnCreateJoinEventRequestCommand}" CommandParameter="{Binding .}"/>

@@ -4,6 +4,7 @@ using MetroEventsMobile.Views;
 using MetroEventsMobile.Views.Organizer;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Text;
 using Xamarin.Forms;
 
@@ -23,9 +24,13 @@ namespace MetroEventsMobile.ViewModels.Organizer
 
         public Command OnDeleteEventCommand { get; private set; }
 
+        public Command OnCancelEventCommand { get; private set; }
+
         public Command OnGoToRequestsReceivedCommand { get; private set; }
 
         public Command OnShowEventParticipantsCommand { get; private set; }
+
+        public Command OnShowEventReviewsCommand { get; private set; }
 
         public Command OnLogoutCommand { get; private set; }
 
@@ -55,6 +60,20 @@ namespace MetroEventsMobile.ViewModels.Organizer
             await Application.Current.MainPage.Navigation.PushAsync(new EventParticipantsView(_event.id.ToString()));
         }
 
+        public async void ShowEventReviews(Event _event)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new EventReviewsView(_event));
+        }
+
+        public async void CancelEvent(Event _event)
+        {
+            var data = new List<KeyValuePair<string, string>>();
+            data.Add(new KeyValuePair<string, string>("status", "cancelled"));
+            FormUrlEncodedContent content = new FormUrlEncodedContent(data);
+            await RESTServices.UpdateEvent(content, _event.id.ToString());
+            LoadEvents();
+        }
+
         public async void LoadEvents()
         {
             CreatedEvents = await RESTServices.GetAllCreatedEvents(Store.User.id.ToString());
@@ -66,6 +85,8 @@ namespace MetroEventsMobile.ViewModels.Organizer
             OnDeleteEventCommand = new Command<Event>(DeleteEvent);
             OnGoToRequestsReceivedCommand = new Command(GoToRequestsReceived);
             OnShowEventParticipantsCommand = new Command<Event>(ShowEventParticipants);
+            OnShowEventReviewsCommand = new Command<Event>(ShowEventReviews);
+            OnCancelEventCommand = new Command<Event>(CancelEvent);
             OnLogoutCommand = new Command(GoToSignIn);
             LoadEvents();
         }

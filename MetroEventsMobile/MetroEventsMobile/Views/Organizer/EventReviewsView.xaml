@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MetroEventsMobile.Views.Organizer.EventReviewsView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button 
+                Text="Back"
+                HorizontalOptions="Fill" 
+                Command="{Binding OnGoToEventEventDashboard}" />
+            <Label Text="{Binding Event.title}" />
+
+            <ScrollView>
+                <CollectionView 
+                    x:Name="collectionView"
+                    ItemsSource="{Binding EventReviews}" >
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="25" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame 
+                                BorderColor="Gray"
+                                CornerRadius="5"
+                                Padding="8"
+                                Margin="8">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding comment}" />
+                                    <Label Text="{Binding user.firstName}" />
+                                    <Label Text="{Binding user.lastName}" />
+                                    <Label Text="{Binding createdAt }" />
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

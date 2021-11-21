@@ -25,6 +25,7 @@ namespace MetroEventsMobile.ViewModels.Regular
         public Command OnCreateJoinEventRequestCommand { get; private set; }
         public Command OnGoToRequestsCommand { get; private set; }
         public Command OnCreateRequestCommand { get; private set; }
+        public Command OnGoEventReviewsCommand { get; private set; }
         public Command OnLogoutCommand { get; private set; }
 
         public async void CreateJoinEventRequest(Event _event)
@@ -63,6 +64,11 @@ namespace MetroEventsMobile.ViewModels.Regular
             GoToRequests();
         }
 
+        public async void GoToEventReviews(Event _event)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new EventReviewsView(_event));
+        }
+
         public async void LoadEvents()
         {
             Events = await RESTServices.GetAllEvents();
@@ -73,6 +79,7 @@ namespace MetroEventsMobile.ViewModels.Regular
             OnCreateJoinEventRequestCommand = new Command<Event>(CreateJoinEventRequest);
             OnGoToRequestsCommand = new Command(GoToRequests);
             OnCreateRequestCommand = new Command<string>(CreateRequest);
+            OnGoEventReviewsCommand = new Command<Event>(GoToEventReviews);
             OnLogoutCommand = new Command(GoToSignIn);
             LoadEvents();
         }

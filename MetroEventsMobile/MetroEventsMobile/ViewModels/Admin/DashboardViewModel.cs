@@ -1,6 +1,7 @@
 ﻿using MetroEventsMobile.Models;
 using MetroEventsMobile.Services;
 using MetroEventsMobile.Views;
+using MetroEventsMobile.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -22,6 +23,8 @@ namespace MetroEventsMobile.ViewModels.Admin
         public Command OnLogoutCommand { get; private set; }
         public Command OnAcceptRequestCommand { get; private set; }
         public Command OnDeclineRequestCommand { get; private set; }
+        public Command OnShowAllUsersViewCommand { get; private set; }
+        public Command OnShowAllEventsViewCommand { get; private set; }
 
         public async void GoToSignIn()
         {
@@ -48,6 +51,16 @@ namespace MetroEventsMobile.ViewModels.Admin
             LoadRequests();
         }
 
+        public async void ShowAllUsers()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AllUsersView());
+        }
+
+        public async void ShowAllEvents()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AllEventsView());
+        }
+
         public async void LoadRequests()
         {
             Requests = await RESTServices.GetAllRequests();
@@ -59,6 +72,9 @@ namespace MetroEventsMobile.ViewModels.Admin
             OnAcceptRequestCommand = new Command<Request>(AcceptRequest);
             OnDeclineRequestCommand = new Command<Request>(DeclineRequest);
             OnLogoutCommand = new Command(GoToSignIn);
+            OnShowAllUsersViewCommand = new Command(ShowAllUsers);
+            OnShowAllEventsViewCommand = new Command(ShowAllEvents);
+
             LoadRequests();
         }
     }
